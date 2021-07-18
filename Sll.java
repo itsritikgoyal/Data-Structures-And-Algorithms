@@ -10,6 +10,7 @@ public class Sll
             this.data = data;
             this.next = null;
         }
+        
     }
     
     
