@@ -1,3 +1,5 @@
+
+
 public class Sll 
 {
     private ListNode head;
@@ -122,15 +124,73 @@ public class Sll
         }
     }
 
+    public boolean searchelement(int key){
+        ListNode current = head;
+        while(current!=null){
+            if(current.data==key)
+                return true;
+            current = current.next;
+        }
+        return false;
+    }
+
+    public void reverselist(){
+        ListNode current = head;
+        ListNode previous =  null;
+        ListNode next = null;
+        while(current!=null){
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        head = previous;
+    }
+
+    public ListNode middlenode(){
+        ListNode lowptr = head;
+        ListNode highptr = head;
+        while((highptr!=null)&&(highptr.next!=null)){
+            lowptr =lowptr.next;
+            highptr = highptr.next.next;
+        }
+        return lowptr;
+    }
+
+    public ListNode getNodeFromEnd(int n){
+        if(n <= 0 ){
+            throw new IllegalArgumentException("invalid value");
+        }
+        ListNode mainptr = head;
+        ListNode refptr = head;
+
+        int count = 0;
+        while(count < n){
+            if(refptr == null){
+                throw new IllegalArgumentException("invalid argument");
+            }
+            refptr = refptr.next;
+            count++;
+        }
+
+        while(refptr !=null){
+            refptr = refptr.next;
+            mainptr = mainptr.next;
+        }
+        return mainptr;
+    }
+
 
     public static void main(String[] args) {
         Sll sll = new Sll();
 
         sll.insert(10, 1);
-        sll.insert(10, 1);
-        sll.insert(10, 3);
-        System.out.println(sll.length()); // Print the length of linked list
-        sll.delete(1);
-        sll.display(); // Display the Linked List
+        sll.insert(20, 2);
+        sll.insert(30, 3);
+        sll.insertEnd(40);
+        sll.insertFirst(5);
+        sll.display();
+        System.out.println(sll.getNodeFromEnd(2).data);
+
     }
 }
