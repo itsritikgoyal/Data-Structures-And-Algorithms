@@ -1,6 +1,6 @@
 
 
-abstract class Sll 
+public class Sll 
 {
     private ListNode head;
 
